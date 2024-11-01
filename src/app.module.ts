@@ -1,11 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { BooksModule } from './books/books.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { BooksModule } from './book/book.module';
 
 @Module({
-  imports: [BooksModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [MongooseModule.forRoot('mongodb+srv://gutenberg:gutenberg@cluster0.lq9rh.mongodb.net/gutenberg/?retryWrites=true&w=majority&appName=Cluster0'), BooksModule],
 })
 export class AppModule {}
