@@ -27,6 +27,7 @@ export class BooksService {
   }
 
   async getBookMetadata(id: string): Promise<{
+    ['Cover Image']: string;
     ['Author']: string;
     ['Title']: string;
     ['Original Publication']: string;
@@ -53,15 +54,20 @@ export class BooksService {
 
       // Extracting metadata
       const metadata = {
+        ['Cover Image']: $('.cover-art').attr('src'),
         ['Author']: $('tr:contains("Author") td').text().trim(),
         ['Title']: $('tr:contains("Title") td').text().trim(),
-        ['Original Publication']: $('tr:contains("Original Publication") td').text().trim(),
+        ['Original Publication']: $('tr:contains("Original Publication") td')
+          .text()
+          .trim(),
         ['Credits']: $('tr:contains("Credits") td').text().trim(),
         ['Language']: $('tr:contains("Language") td').text().trim(),
         ['Category']: $('tr:contains("Category") td').text().trim(),
         ['EbookNo']: $('tr:contains("EBook-No.") td').text().trim(),
         ['Release Date']: $('tr:contains("Release Date") td').text().trim(),
-        ['Copyright Status']: $('tr:contains("Copyright Status") td').text().trim(),
+        ['Copyright Status']: $('tr:contains("Copyright Status") td')
+          .text()
+          .trim(),
         ['Downloads']: $('tr:contains("Downloads") td').text().trim(),
       };
 
@@ -70,6 +76,7 @@ export class BooksService {
         // metadataHtml: fileMetadata,
       };
     } catch (error) {
+      console.log({ error });
       throw new Error('Error fetching data from Gutenberg API');
     }
   }

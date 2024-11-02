@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { BooksService } from './book.service';
 
 @Controller('book')
@@ -7,14 +7,14 @@ export class BooksController {
 
   @Get('getContent')
   async fetchContent(@Query('id') id: string) {
-    const bookId = id || '74650'; // Default ID if not provided
+    const bookId = id;
     const result = await this.booksService.getBookContent(bookId);
     return result;
   }
 
   @Get('getMetadata')
   async fetchMetadata(@Query('id') id: string) {
-    const bookId = id || '74650'; // Default ID if not provided
+    const bookId = id;
     const result = await this.booksService.getBookMetadata(bookId);
     return result;
   }
