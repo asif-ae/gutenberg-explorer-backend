@@ -34,7 +34,7 @@ export class BooksService {
     ['Credits']: string;
     ['Language']: string;
     ['Category']: string;
-    ['EbookNo']: string;
+    ['Ebook No.']: string;
     ['Release Date']: string;
     ['Copyright Status']: string;
     ['Downloads']: string;
@@ -63,7 +63,7 @@ export class BooksService {
         ['Credits']: $('tr:contains("Credits") td').text().trim(),
         ['Language']: $('tr:contains("Language") td').text().trim(),
         ['Category']: $('tr:contains("Category") td').text().trim(),
-        ['EbookNo']: $('tr:contains("EBook-No.") td').text().trim(),
+        ['Ebook No.']: $('tr:contains("EBook-No.") td').text().trim(),
         ['Release Date']: $('tr:contains("Release Date") td').text().trim(),
         ['Copyright Status']: $('tr:contains("Copyright Status") td')
           .text()
