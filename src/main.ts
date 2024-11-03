@@ -5,7 +5,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: ['https://your-frontend-domain.vercel.app'], // Replace with your frontend URL
+    origin: [
+      'http://localhost:3000',
+      'https://gutenberg-explorer-frontend.vercel.app',
+    ], // Replace with your frontend URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
