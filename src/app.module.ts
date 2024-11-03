@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '@nestjs/config';
 import { BooksModule } from './book/book.module';
 
 @Module({
@@ -8,14 +7,8 @@ import { BooksModule } from './book/book.module';
     ConfigModule.forRoot({
       isGlobal: true, // Makes the ConfigModule available globally
     }),
-    MongooseModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('DATABASE_URL'),
-      }),
-      inject: [ConfigService],
-    }),
     BooksModule,
   ],
+  providers: [],
 })
 export class AppModule {}
